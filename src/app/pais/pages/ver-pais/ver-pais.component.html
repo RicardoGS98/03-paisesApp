@@ -1,1 +1,52 @@
-<p>ver-pais works!</p>
+<div class="animate__animated animate__fadeIn">
+  <div
+    *ngIf="!pais; else divPais"
+    class="alert alert-info">
+    Loading...
+  </div>
+
+  <ng-template #divPais>
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <h1>Pais: <small>{{pais.name | titlecase}}</small></h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-4">
+        <h3>Bandera</h3>
+        <img [src]="pais.flag" alt="" class="img-thumbnail">
+      </div>
+      <div class="col">
+        <h3>Información!</h3>
+        <ul class="list-group">
+          <li class="list-group-item">
+            <strong>Población: </strong>
+            <small>{{pais.population | number}}</small>
+          </li>
+          <li class="list-group-item">
+            <strong>Código Numérico: </strong>
+            <small>{{pais.numericCode | number}}</small>
+          </li>
+          <li class="list-group-item">
+            <strong>Alpha 3: </strong>
+            <small>{{pais.alpha3Code}}</small>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="row">
+      <h3>Traducciones</h3>
+      <div
+        class="row"
+        style="gap: 5px"
+      >
+        <div
+          *ngFor="let trans of object.values(pais.translations)"
+          class="col-2 bg-primary text-center text-white rounded-bottom"
+        >
+          {{trans}}
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</div>

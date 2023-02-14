@@ -1,1 +1,13 @@
-<p>sidebar works!</p>
+<h2>Busqueda</h2>
+<hr>
+<ul class="list-group">
+  <li
+    *ngFor="let page of pages"
+    class="list-group-item"
+    routerLink="{{page.path}}"
+    [routerLinkActiveOptions]="{exact: true}"
+    routerLinkActive="active"
+  >
+    {{page.name}}
+  </li>
+</ul>
